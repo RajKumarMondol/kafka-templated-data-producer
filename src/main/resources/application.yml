@@ -4,6 +4,31 @@ spring:
   main:
     web-application-type: NONE
 
+kafka:
+    bootstrap:
+      servers: localhost:9092
+    security:
+      protocol: PLAINTEXT
+    ssl:
+      truststore:
+        location: "path"
+        password: "pwd"
+      endpoint:
+        identification:
+          algorithm: https
+    sasl:
+      mechanism: PLAIN
+      jaas:
+        config: "org.apache.kafka.common.security.plain.PlainLoginModule required username='name' password='pwd';"
+    retry:
+      backoff:
+        ms: 1000
+    reconnect:
+      backoff:
+        ms: 1000
+    max:
+      block:
+        ms: 10000
 
 settings:
   topic-name: output-topic
