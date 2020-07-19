@@ -7,7 +7,6 @@ import org.mockito.Mockito;
 import org.slf4j.Logger;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -58,6 +57,6 @@ public class CommandLineApplicationTest {
         verify(mockLogger)
                 .info("mockSettings.toString()");
         verify(mockedKafkaRecordProducer)
-                .produceSingleRecord("output","testKey","testMessage");
+                .produceSingleRecord("output", "testKey", "testMessage");
     }
 }
