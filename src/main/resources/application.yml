@@ -32,9 +32,9 @@ kafka:
 
 settings:
   topic-name: output-topic
-  message-count: 1
+  message-count: 10
   message-interval: 1
-  message-template-file: ""
-  template-config-file: classpath:TemplateConfiguration.example.json
+  message-template-file: "./src/main/resources/MessageTemplates.json"
+  template-config-file:  "./src/main/resources/TemplateConfiguration.example.json"
   start-time: null
   realtime: false

@@ -41,5 +41,9 @@ public abstract class BaseTemplate {
         this.allowMultiple = allowMultiple;
         this.generator = generator;
     }
+
+    public String generate() {
+        return "unknown";
+    }
 }
 
