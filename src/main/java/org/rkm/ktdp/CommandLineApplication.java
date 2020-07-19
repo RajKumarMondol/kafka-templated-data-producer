@@ -11,13 +11,16 @@ public class CommandLineApplication implements CommandLineRunner {
     private final ApplicationSettings applicationSettings;
     private final Logger logger;
     private final CommandLineParams commandLineParams;
+    private final KafkaRecordProducer kafkaRecordProducer;
 
     public CommandLineApplication(ApplicationSettings applicationSettings,
                                   Logger logger,
-                                  CommandLineParams commandLineParams) {
+                                  CommandLineParams commandLineParams,
+                                  KafkaRecordProducer kafkaRecordProducer) {
         this.applicationSettings = applicationSettings;
         this.logger = logger;
         this.commandLineParams = commandLineParams;
+        this.kafkaRecordProducer = kafkaRecordProducer;
     }
 
     @Override
@@ -28,6 +31,9 @@ public class CommandLineApplication implements CommandLineRunner {
         } else {
             applicationSettings.updateFrom(commandLine);
             logger.info(applicationSettings.toString());
+
+            kafkaRecordProducer
+                    .produceSingleRecord(applicationSettings.getTopicName(), "testKey", "testMessage");
         }
     }
 }
