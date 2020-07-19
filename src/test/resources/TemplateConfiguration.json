@@ -1,0 +1,31 @@
+[
+  {
+    "name": "date",
+    "type": "DateTemplate"
+  },
+  {
+    "name": "datetime",
+    "type": "DatetimeTemplate"
+  },
+  {
+    "name": "double",
+    "type": "DoubleTemplate"
+  },
+  {
+    "name": "source",
+    "type": "FromSourceTemplate"
+  },
+  {
+    "name": "integer",
+    "type": "IntegerTemplate"
+  },
+  {
+    "name": "time",
+    "type": "TimeTemplate"
+  },
+  {
+    "name": "uuid",
+    "type": "UUIDTemplate",
+    "allowMultiple": true
+  }
+]

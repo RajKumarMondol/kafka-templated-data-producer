@@ -12,7 +12,7 @@ import java.util.Properties;
 
 @SpringBootApplication
 public class Application {
-    private static Logger applicationLogger = LoggerFactory.getLogger(Application.class);
+    private static final Logger applicationLogger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
         try {

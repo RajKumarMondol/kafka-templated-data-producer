@@ -28,10 +28,13 @@ dependencies {
 
     annotationProcessor "org.projectlombok:lombok:" + lombokVersion
     compileOnly 'org.projectlombok:lombok:' + lombokVersion
-
+<<<<<<< HEAD
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
     compile group: "org.springframework.kafka", name: "spring-kafka", version: "2.4.2.RELEASE"
+=======
     compile group: "com.fasterxml.jackson.datatype", name: "jackson-datatype-jsr310"
+>>>>>>> dcabac5... Read template configuration from given file
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
