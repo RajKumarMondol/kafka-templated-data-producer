@@ -12,28 +12,37 @@ public class CommandLineApplication implements CommandLineRunner {
     private final Logger logger;
     private final CommandLineParams commandLineParams;
     private final KafkaRecordProducer kafkaRecordProducer;
+    private final MessageGenerator messageGenerator;
 
     public CommandLineApplication(ApplicationSettings applicationSettings,
                                   Logger logger,
                                   CommandLineParams commandLineParams,
-                                  KafkaRecordProducer kafkaRecordProducer) {
+                                  KafkaRecordProducer kafkaRecordProducer,
+                                  MessageGenerator messageGenerator) {
         this.applicationSettings = applicationSettings;
         this.logger = logger;
         this.commandLineParams = commandLineParams;
         this.kafkaRecordProducer = kafkaRecordProducer;
+        this.messageGenerator = messageGenerator;
     }
 
     @Override
     public void run(String... args) {
-        CommandLine commandLine = commandLineParams.purse(args);
-        if (commandLine.hasOption("help")) {
-            commandLineParams.printHelp(new HelpFormatter());
-        } else {
-            applicationSettings.updateFrom(commandLine);
-            logger.info(applicationSettings.toString());
+        try {
+            CommandLine commandLine = commandLineParams.purse(args);
+            if (commandLine.hasOption("help")) {
+                commandLineParams.printHelp(new HelpFormatter());
+            } else {
+                applicationSettings.updateFrom(commandLine);
+                logger.info(applicationSettings.toString());
 
-            kafkaRecordProducer
-                    .produceSingleRecord(applicationSettings.getTopicName(), "testKey", "testMessage");
+                for (int index = 0; index < applicationSettings.getMessageCount(); index++) {
+                    String[] result = messageGenerator.nextKeyAndMessage();
+                    kafkaRecordProducer.produceSingleRecord(applicationSettings.getTopicName(), result[0], result[1]);
+                }
+            }
+        } catch (Exception exception) {
+            logger.error("Application has Exited due to unexpected exception.", exception);
         }
     }
 }
