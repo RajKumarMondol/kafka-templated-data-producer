@@ -27,44 +27,35 @@ This is to produce kafka messages to specified topic based on the template data 
 
 ## Example template configuration
 ```
-{
-  "fields": [
-    {
-      "name": "timeValue",
-      "type": "datetime",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-      "generator": "now"
-    },
-    {
-      "name": "integerValue",
-      "type": "int",
-      "format": "00000",
-      "generator": "incremental",
-      "start": 100,
-      "increment": 10
-    },
-    {
-      "name": "doubleValue",
-      "type": "double",
-      "format": "00000.00",
-      "generator": "random",
-      "min": -1000.00,
-      "max":  1000.00
-    },
-    {
-      "name": "stringValue1",
-      "type": "string",
-      "generator": "random",
-      "source": "list",
-      "list": [ "Value1", "Value2", "Value3", "Value4", "Value5" ]
-    },
-    {
-      "name": "stringValue1",
-      "type": "string",
-      "generator": "sequence",
-      "source": "file",
-      "file": "filePath"
-    }
-  ]
-}
+[
+  {
+    "name": "date",
+    "type": "DateTemplate"
+  },
+  {
+    "name": "datetime",
+    "type": "DatetimeTemplate"
+  },
+  {
+    "name": "double",
+    "type": "DoubleTemplate"
+  },
+  {
+    "name": "source",
+    "type": "FromSourceTemplate"
+  },
+  {
+    "name": "integer",
+    "type": "IntegerTemplate"
+  },
+  {
+    "name": "time",
+    "type": "TimeTemplate"
+  },
+  {
+    "name": "uuid",
+    "type": "UUIDTemplate",
+    "allowMultiple": true
+  }
+]
 ```

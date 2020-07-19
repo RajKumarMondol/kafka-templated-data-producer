@@ -30,11 +30,11 @@ kafka:
     block:
       ms: 10000
 
-settings:
+config:
   topic-name: output-topic
   message-count: 1
   message-interval: 1
-  message-template-file: ""
-  template-config-file: classpath:TemplateConfiguration.example.json
   start-time: null
   realtime: false
+  template-file: ""
+  template-config-file: classpath:TemplateConfiguration.json
