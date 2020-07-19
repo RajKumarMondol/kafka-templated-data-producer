@@ -29,33 +29,157 @@ This is to produce kafka messages to specified topic based on the template data 
 ```
 [
   {
-    "name": "date",
-    "type": "DateTemplate"
+    "name": "dateRandom",
+    "type": "DateTemplate",
+    "generator": {
+      "type": "Random",
+      "format": "yyyy-MM-dd"
+    }
   },
   {
-    "name": "datetime",
-    "type": "DatetimeTemplate"
+    "name": "dateSequence",
+    "type": "DateTemplate",
+    "generator": {
+      "type": "Sequence",
+      "format": "yyyy-MM-dd"
+    }
   },
   {
-    "name": "double",
-    "type": "DoubleTemplate"
+    "name": "dateCurrent",
+    "type": "DateTemplate",
+    "generator": {
+      "type": "Current",
+      "format": "yyyy-MM-dd"
+    }
   },
   {
-    "name": "source",
-    "type": "FromSourceTemplate"
+    "name": "datetimeRandom",
+    "type": "DatetimeTemplate",
+    "generator": {
+      "type": "Random",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
+    }
   },
   {
-    "name": "integer",
-    "type": "IntegerTemplate"
+    "name": "datetimeSequence",
+    "type": "DatetimeTemplate",
+    "generator": {
+      "type": "Sequence",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
+    }
   },
   {
-    "name": "time",
-    "type": "TimeTemplate"
+    "name": "datetimeCurrent",
+    "type": "DatetimeTemplate",
+    "generator": {
+      "type": "Current",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
+    }
+  },
+  {
+    "name": "doubleRandom",
+    "type": "DoubleTemplate",
+    "generator": {
+      "type": "Random",
+      "format": "000000.00"
+    }
+  },
+  {
+    "name": "doubleSequence",
+    "type": "DoubleTemplate",
+    "generator": {
+      "type": "Sequence",
+      "format": "000000.00"
+    }
+  },
+  {
+    "name": "sourceRandom",
+    "type": "FromSourceTemplate",
+    "generator": {
+      "type": "Random",
+      "source": {
+        "type": "FromFile",
+        "filepath": "filename.txt"
+      }
+    }
+  },
+  {
+    "name": "sourceSequence",
+    "type": "FromSourceTemplate",
+    "generator": {
+      "type": "Sequence",
+      "source": {
+        "type": "FromValues",
+        "values": [
+          "value1",
+          "value2"
+        ]
+      }
+    }
+  },
+  {
+    "name": "integerRandom",
+    "type": "IntegerTemplate",
+    "generator": {
+      "type": "Random",
+      "format": "000000"
+    }
+  },
+  {
+    "name": "integerSequence",
+    "type": "IntegerTemplate",
+    "generator": {
+      "type": "Sequence",
+      "format": "000000"
+    }
+  },
+  {
+    "name": "timeRandom",
+    "type": "TimeTemplate",
+    "generator": {
+      "type": "Random",
+      "format": "HH:mm:ss.SSSxx"
+    }
+  },
+  {
+    "name": "timeSequence",
+    "type": "TimeTemplate",
+    "generator": {
+      "type": "Sequence",
+      "format": "HH:mm:ss.SSSxx"
+    }
+  },
+  {
+    "name": "timeCurrent",
+    "type": "TimeTemplate",
+    "generator": {
+      "type": "Current",
+      "format": "HH:mm:ss.SSSxx"
+    }
+  },
+  {
+    "name": "stringRandom",
+    "type": "StringTemplate",
+    "generator": {
+      "type": "Random"
+    },
+    "format": "\\w+"
+  },
+  {
+    "name": "stringSequence",
+    "type": "StringTemplate",
+    "generator": {
+      "type": "Sequence"
+    },
+    "format": "\\d+"
   },
   {
     "name": "uuid",
     "type": "UUIDTemplate",
-    "allowMultiple": true
+    "allowMultiple": true,
+    "generator": {
+      "type": "UUIDGenerator"
+    }
   }
 ]
 ```
