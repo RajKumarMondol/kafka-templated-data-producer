@@ -42,11 +42,15 @@ public class FileReaderTest {
                         new org.rkm.ktdp.generators.date.Random("yyyy-MM-dd")),
                 new DateTemplate("dateSequence", false,
                         new org.rkm.ktdp.generators.date.Sequence("yyyy-MM-dd")),
+                new DateTemplate("dateCurrent", false,
+                        new org.rkm.ktdp.generators.date.Current("yyyy-MM-dd")),
 
                 new DatetimeTemplate("datetimeRandom", false,
                         new org.rkm.ktdp.generators.datetime.Random("yyyy-MM-dd'T'HH:mm:ss.SSSxx")),
                 new DatetimeTemplate("datetimeSequence", false,
                         new org.rkm.ktdp.generators.datetime.Sequence("yyyy-MM-dd'T'HH:mm:ss.SSSxx")),
+                new DatetimeTemplate("datetimeCurrent", false,
+                        new org.rkm.ktdp.generators.datetime.Current("yyyy-MM-dd'T'HH:mm:ss.SSSxx")),
 
                 new DoubleTemplate("doubleRandom", false,
                         new org.rkm.ktdp.generators.number.Random("000000.00")),
@@ -54,10 +58,11 @@ public class FileReaderTest {
                         new org.rkm.ktdp.generators.number.Sequence("000000.00")),
 
                 new FromSourceTemplate("sourceRandom", false,
-                        new org.rkm.ktdp.generators.fromsource.Random(new FromFile("filename.txt"))),
+                        new org.rkm.ktdp.generators.fromsource.Random(
+                                new FromFile("filename.txt"))),
                 new FromSourceTemplate("sourceSequence", false,
-                        new org.rkm.ktdp.generators.fromsource.Sequence(new FromValues(Arrays.asList("value1",
-                                "value2")))),
+                        new org.rkm.ktdp.generators.fromsource.Sequence(
+                                new FromValues(Arrays.asList("value1", "value2")))),
 
                 new IntegerTemplate("integerRandom", false,
                         new org.rkm.ktdp.generators.wholenumber.Random("000000")),
@@ -68,6 +73,8 @@ public class FileReaderTest {
                         new org.rkm.ktdp.generators.time.Random("HH:mm:ss.SSSxx")),
                 new TimeTemplate("timeSequence", false,
                         new org.rkm.ktdp.generators.time.Sequence("HH:mm:ss.SSSxx")),
+                new TimeTemplate("timeCurrent", false,
+                        new org.rkm.ktdp.generators.time.Current("HH:mm:ss.SSSxx")),
 
                 new StringTemplate("stringRandom", false,
                         new org.rkm.ktdp.generators.characters.Random(), "\\w+"),
@@ -90,27 +97,5 @@ public class FileReaderTest {
 
         verify(mockedLogger)
                 .error(eq("Error while reading template configuration."), any(MismatchedInputException.class));
-    }
-
-    @Test
-    public void shouldReturnMessageTemplatesFromTemplateFile() throws IOException {
-        String messageTemplateFilePath = getClass().getClassLoader().getResource("MessageTemplates.json").getFile();
-        String[] messageTemplates = new FileReader(mockedLogger).messageTemplateFile(messageTemplateFilePath);
-        assertThat(messageTemplates)
-                .containsExactly(
-                        "{\"message\": \"Message0\"}",
-                        "{\"message\": \"Message1\"}"
-                );
-    }
-
-    @Test
-    public void shouldLogErrorWhileReadingMessageTemplateFile() {
-        String messageTemplateFile = "InvalidFile.json";
-
-        assertThrows(IOException.class,
-                () -> new FileReader(mockedLogger).messageTemplateFile(messageTemplateFile));
-
-        verify(mockedLogger)
-                .error(eq("Error while reading message template file."), any(IOException.class));
     }
 }

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
-public class Random extends DateGenerator {
-    public Random(@JsonProperty(value = "format") String format) {
+public class Current extends DateGenerator {
+    public Current(@JsonProperty(value = "format") String format) {
         super(format);
     }
 }
