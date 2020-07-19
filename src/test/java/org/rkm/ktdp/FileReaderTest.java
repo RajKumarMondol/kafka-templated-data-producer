@@ -98,4 +98,26 @@ public class FileReaderTest {
         verify(mockedLogger)
                 .error(eq("Error while reading template configuration."), any(MismatchedInputException.class));
     }
+
+    @Test
+    public void shouldReturnMessageTemplatesFromTemplateFile() throws IOException {
+        String messageTemplateFilePath = getClass().getClassLoader().getResource("MessageTemplates.json").getFile();
+        String[] messageTemplates = new FileReader(mockedLogger).messageTemplateFile(messageTemplateFilePath);
+        assertThat(messageTemplates)
+                .containsExactly(
+                        "{\"message\": \"Message0\"}",
+                        "{\"message\": \"Message1\"}"
+                );
+    }
+
+    @Test
+    public void shouldLogErrorWhileReadingMessageTemplateFile() {
+        String messageTemplateFile = "InvalidFile.json";
+
+        assertThrows(IOException.class,
+                () -> new FileReader(mockedLogger).messageTemplateFile(messageTemplateFile));
+
+        verify(mockedLogger)
+                .error(eq("Error while reading message template file."), any(IOException.class));
+    }
 }
