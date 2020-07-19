@@ -10,6 +10,7 @@ import org.rkm.ktdp.generators.specification.FormattedGenerator;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Random.class),
         @JsonSubTypes.Type(value = Sequence.class),
+        @JsonSubTypes.Type(value = Current.class),
 })
 @EqualsAndHashCode(callSuper = true)
 public abstract class DateGenerator extends FormattedGenerator {
