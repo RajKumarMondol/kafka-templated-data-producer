@@ -2,6 +2,8 @@ package org.rkm.ktdp;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
+import org.rkm.ktdp.configs.ApplicationSettings;
+import org.rkm.ktdp.io.KafkaRecordProducer;
 import org.slf4j.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

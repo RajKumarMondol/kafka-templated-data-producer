@@ -4,6 +4,8 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.rkm.ktdp.configs.ApplicationSettings;
+import org.rkm.ktdp.io.KafkaRecordProducer;
 import org.slf4j.Logger;
 
 import static org.mockito.ArgumentMatchers.any;

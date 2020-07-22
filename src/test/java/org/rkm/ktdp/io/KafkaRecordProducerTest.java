@@ -1,4 +1,4 @@
-package org.rkm.ktdp;
+package org.rkm.ktdp.io;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

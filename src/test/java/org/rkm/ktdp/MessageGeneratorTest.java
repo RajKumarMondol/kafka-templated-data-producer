@@ -2,6 +2,8 @@ package org.rkm.ktdp;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.rkm.ktdp.configs.ApplicationSettings;
+import org.rkm.ktdp.io.FileReader;
 import org.rkm.ktdp.templates.specification.BaseTemplate;
 
 import java.io.IOException;
