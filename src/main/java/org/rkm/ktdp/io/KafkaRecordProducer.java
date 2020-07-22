@@ -1,4 +1,4 @@
-package org.rkm.ktdp;
+package org.rkm.ktdp.io;
 
 import lombok.SneakyThrows;
 import org.apache.kafka.clients.producer.KafkaProducer;

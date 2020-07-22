@@ -1,4 +1,4 @@
-package org.rkm.ktdp;
+package org.rkm.ktdp.io;
 
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import org.junit.jupiter.api.Test;

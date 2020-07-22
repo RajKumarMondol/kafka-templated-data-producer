@@ -1,4 +1,4 @@
-package org.rkm.ktdp;
+package org.rkm.ktdp.configs;
 
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.producer.ProducerConfig;

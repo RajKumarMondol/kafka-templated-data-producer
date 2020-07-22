@@ -1,4 +1,4 @@
-package org.rkm.ktdp;
+package org.rkm.ktdp.configs;
 
 import org.apache.commons.cli.CommandLine;
 import org.junit.jupiter.api.Test;
