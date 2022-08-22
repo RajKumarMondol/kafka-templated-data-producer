@@ -14,7 +14,7 @@ import org.rkm.ktdp.generators.specification.BaseGenerator;
 })
 @EqualsAndHashCode(callSuper = true)
 public abstract class FromSourceGenerator extends BaseGenerator {
-    public final BaseSource source;
+    protected final BaseSource source;
 
     public FromSourceGenerator(@JsonProperty(value = "source") BaseSource source) {
         this.source = source;

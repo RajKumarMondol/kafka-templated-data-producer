@@ -5,15 +5,9 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import org.rkm.ktdp.generators.specification.BaseGenerator;
-import org.rkm.ktdp.templates.DateTemplate;
-import org.rkm.ktdp.templates.DatetimeTemplate;
-import org.rkm.ktdp.templates.DoubleTemplate;
-import org.rkm.ktdp.templates.FromSourceTemplate;
-import org.rkm.ktdp.templates.IntegerTemplate;
-import org.rkm.ktdp.templates.StringTemplate;
-import org.rkm.ktdp.templates.TimeTemplate;
-import org.rkm.ktdp.templates.UUIDTemplate;
+import org.rkm.ktdp.templates.*;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
@@ -24,9 +18,9 @@ import org.rkm.ktdp.templates.UUIDTemplate;
         @JsonSubTypes.Type(value = IntegerTemplate.class),
         @JsonSubTypes.Type(value = TimeTemplate.class),
         @JsonSubTypes.Type(value = StringTemplate.class),
-        @JsonSubTypes.Type(value = UUIDTemplate.class),
 })
 @EqualsAndHashCode
+@ToString
 public abstract class BaseTemplate {
     protected final BaseGenerator generator;
     @Getter
@@ -40,6 +34,10 @@ public abstract class BaseTemplate {
         this.name = name;
         this.allowMultiple = allowMultiple;
         this.generator = generator;
+    }
+
+    public String generate() {
+        return generator.generate();
     }
 }
 

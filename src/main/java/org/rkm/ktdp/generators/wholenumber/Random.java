@@ -5,7 +5,19 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 public class Random extends IntegerGenerator {
-    public Random(@JsonProperty(value = "format") String format) {
+    private final int minimum;
+    private final int range;
+
+    public Random(@JsonProperty(value = "format") String format,
+                  @JsonProperty(value = "minimum") int minimum,
+                  @JsonProperty(value = "maximum") int maximum) {
         super(format);
+        this.minimum = minimum;
+        this.range = maximum - minimum + 1;
+    }
+
+    @Override
+    public String generate() {
+        return String.format(format, (int) (Math.random() * range) + minimum);
     }
 }

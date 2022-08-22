@@ -8,4 +8,10 @@ public class Sequence extends DatetimeGenerator {
     public Sequence(@JsonProperty(value = "format") String format) {
         super(format);
     }
+
+    @Override
+    public String generate() {
+        return "yetToBeImplemented";
+    }
+
 }

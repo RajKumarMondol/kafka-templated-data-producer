@@ -12,18 +12,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class FileReader {
+public class TemplateFileReader {
     private final Logger logger;
 
-    public FileReader(Logger logger) {
+    public TemplateFileReader(Logger logger) {
         this.logger = logger;
     }
 
-    public List<BaseTemplate> templateConfigurations(String templateConfigurationFile) throws IOException {
+    public List<BaseTemplate> configurationFile(String templateConfigurationFile) throws IOException {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.findAndRegisterModules();
@@ -31,12 +30,12 @@ public class FileReader {
                     new TypeReference<List<BaseTemplate>>() {
                     });
         } catch (IOException exception) {
-            logger.error("Error while reading template configuration.", exception);
+            logger.error("Error while reading template configuration. Error : " + exception.getMessage(), exception);
             throw exception;
         }
     }
 
-    public String[] messageTemplateFile(String inputPath) throws IOException {
+    public String[] messageFile(String inputPath) throws IOException {
         List<String> lines = new ArrayList();
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(new File(inputPath)))) {
             String line = reader.readLine();
@@ -45,7 +44,7 @@ public class FileReader {
                 line = reader.readLine();
             }
         } catch (IOException exception) {
-            logger.error("Error while reading message template file.", exception);
+            logger.error("Error while reading message template file. Error : " + exception.getMessage(), exception);
             throw exception;
         }
         return lines.stream().toArray(String[]::new);

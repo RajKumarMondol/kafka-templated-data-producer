@@ -10,4 +10,10 @@ public class Random extends FromSourceGenerator {
     public Random(@JsonProperty(value = "source") BaseSource source) {
         super(source);
     }
+
+    @Override
+    public String generate() {
+        return source.get((int) (Math.random() * source.count()) - 1);
+    }
+
 }

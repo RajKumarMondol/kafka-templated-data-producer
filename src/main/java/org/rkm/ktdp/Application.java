@@ -18,7 +18,7 @@ public class Application {
         try {
             SpringApplication.run(Application.class, args);
         } catch (Exception exception) {
-            applicationLogger.error("Unknown exception occurred", exception);
+            applicationLogger.error("Unknown exception occurred. Error : " + exception.getMessage(), exception);
         }
     }
 

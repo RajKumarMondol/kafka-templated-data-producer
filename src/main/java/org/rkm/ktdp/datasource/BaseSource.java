@@ -11,4 +11,7 @@ import lombok.EqualsAndHashCode;
 })
 @EqualsAndHashCode
 public abstract class BaseSource {
+    public abstract int count();
+
+    public abstract String get(int index);
 }

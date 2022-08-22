@@ -32,6 +32,7 @@ dependencies {
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
     compile group: "org.springframework.kafka", name: "spring-kafka", version: "2.4.2.RELEASE"
     compile group: "com.fasterxml.jackson.datatype", name: "jackson-datatype-jsr310"
+    compile group: "com.github.curious-odd-man", name: "rgxgen", version: "1.4"
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

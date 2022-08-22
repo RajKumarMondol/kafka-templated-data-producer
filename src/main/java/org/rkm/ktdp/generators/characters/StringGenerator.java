@@ -8,7 +8,7 @@ import org.rkm.ktdp.generators.specification.BaseGenerator;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Random.class),
-        @JsonSubTypes.Type(value = Sequence.class),
+        @JsonSubTypes.Type(value = UUIDGenerator.class),
 })
 @EqualsAndHashCode(callSuper = true)
 public abstract class StringGenerator extends BaseGenerator {

@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.EqualsAndHashCode;
 import org.rkm.ktdp.generators.specification.FormattedGenerator;
 
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Random.class),
@@ -14,7 +17,10 @@ import org.rkm.ktdp.generators.specification.FormattedGenerator;
 })
 @EqualsAndHashCode(callSuper = true)
 public abstract class TimeGenerator extends FormattedGenerator {
+    protected final DateTimeFormatter timeFormatter;
+
     protected TimeGenerator(@JsonProperty(value = "format") String format) {
         super(format);
+        this.timeFormatter = DateTimeFormatter.ofPattern(format);
     }
 }

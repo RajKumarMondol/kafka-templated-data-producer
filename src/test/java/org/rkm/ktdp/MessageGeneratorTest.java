@@ -3,7 +3,7 @@ package org.rkm.ktdp;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.rkm.ktdp.configs.ApplicationSettings;
-import org.rkm.ktdp.io.FileReader;
+import org.rkm.ktdp.io.TemplateFileReader;
 import org.rkm.ktdp.templates.specification.BaseTemplate;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class MessageGeneratorTest {
     @Test
     public void shouldGenerateMessagesFromFile() throws IOException {
         ApplicationSettings mockedApplicationSettings = Mockito.mock(ApplicationSettings.class);
-        FileReader mockedFileReader = Mockito.mock(FileReader.class);
+        TemplateFileReader mockedTemplateFileReader = Mockito.mock(TemplateFileReader.class);
         BaseTemplate template1 = Mockito.mock(BaseTemplate.class);
         BaseTemplate template2 = Mockito.mock(BaseTemplate.class);
 
@@ -25,9 +25,9 @@ public class MessageGeneratorTest {
                 .thenReturn("template.file");
         when(mockedApplicationSettings.getTemplateConfigFile())
                 .thenReturn("template.config");
-        when(mockedFileReader.messageTemplateFile("template.file"))
+        when(mockedTemplateFileReader.messageFile("template.file"))
                 .thenReturn(new String[]{"<template1>", "<template1>|<template2>"});
-        when(mockedFileReader.templateConfigurations("template.config"))
+        when(mockedTemplateFileReader.configurationFile("template.config"))
                 .thenReturn(Arrays.asList(template1, template2));
         when(template1.getName())
                 .thenReturn("template1");
@@ -42,7 +42,8 @@ public class MessageGeneratorTest {
                 .thenReturn("value10")
                 .thenReturn("value11");
 
-        MessageGenerator messageGenerator = new MessageGenerator(mockedApplicationSettings, mockedFileReader);
+        MessageGenerator messageGenerator = new MessageGenerator();
+        messageGenerator.initialize(mockedApplicationSettings, mockedTemplateFileReader);
 
         assertThat(messageGenerator.nextKeyAndMessage())
                 .containsExactly("0", "value00");
@@ -57,13 +58,14 @@ public class MessageGeneratorTest {
     @Test
     public void shouldThrowExceptionIfOccurred() throws IOException {
         ApplicationSettings mockedApplicationSettings = Mockito.mock(ApplicationSettings.class);
-        FileReader mockedFileReader = Mockito.mock(FileReader.class);
+        TemplateFileReader mockedTemplateFileReader = Mockito.mock(TemplateFileReader.class);
 
         when(mockedApplicationSettings.getMessageTemplateFile())
                 .thenReturn("template.file");
-        when(mockedFileReader.messageTemplateFile("template.file"))
+        when(mockedTemplateFileReader.messageFile("template.file"))
                 .thenThrow(new RuntimeException("test"));
 
-        assertThrows(RuntimeException.class, () -> new MessageGenerator(mockedApplicationSettings, mockedFileReader));
+        MessageGenerator messageGenerator = new MessageGenerator();
+        assertThrows(RuntimeException.class, () -> messageGenerator.initialize(mockedApplicationSettings, mockedTemplateFileReader));
     }
 }

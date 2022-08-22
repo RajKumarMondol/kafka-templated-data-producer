@@ -4,7 +4,9 @@
     "type": "DateTemplate",
     "generator": {
       "type": "Random",
-      "format": "yyyy-MM-dd"
+      "format": "yyyy-MM-dd",
+      "minimum": "2022-08-24",
+      "maximum": "2022-09-24"
     }
   },
   {
@@ -12,7 +14,9 @@
     "type": "DateTemplate",
     "generator": {
       "type": "Sequence",
-      "format": "yyyy-MM-dd"
+      "format": "yyyy-MM-dd",
+      "startDate": "2022-08-24",
+      "incrementInDays": 5
     }
   },
   {
@@ -20,7 +24,8 @@
     "type": "DateTemplate",
     "generator": {
       "type": "Current",
-      "format": "yyyy-MM-dd"
+      "format": "yyyy-MM-dd",
+      "zoneId": "UTC"
     }
   },
   {
@@ -28,7 +33,9 @@
     "type": "DatetimeTemplate",
     "generator": {
       "type": "Random",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSS",
+      "minimum": "2022-08-24T10:00:00.000",
+      "maximum": "2022-09-24T18:00:00.000"
     }
   },
   {
@@ -36,15 +43,26 @@
     "type": "DatetimeTemplate",
     "generator": {
       "type": "Sequence",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
+      "zoneId": "UTC"
     }
   },
   {
     "name": "datetimeCurrent",
     "type": "DatetimeTemplate",
     "generator": {
-      "type": "Current",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
+      "type": "Local",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
+      "zoneId": "UTC"
+    }
+  },
+  {
+    "name": "datetimeCurrent",
+    "type": "DatetimeTemplate",
+    "generator": {
+      "type": "Universal",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
+      "zoneId": "UTC"
     }
   },
   {
@@ -52,7 +70,9 @@
     "type": "DoubleTemplate",
     "generator": {
       "type": "Random",
-      "format": "000000.00"
+      "format": "%5.2f",
+      "minimum": -10.0,
+      "maximum": -10.0
     }
   },
   {
@@ -60,7 +80,9 @@
     "type": "DoubleTemplate",
     "generator": {
       "type": "Sequence",
-      "format": "000000.00"
+      "format": "%5.2f",
+      "startValue": 100.01,
+      "increment": 0.01
     }
   },
   {
@@ -70,7 +92,7 @@
       "type": "Random",
       "source": {
         "type": "FromFile",
-        "filepath": "filename.txt"
+        "filepath": "./src/main/resources/values.txt"
       }
     }
   },
@@ -93,7 +115,9 @@
     "type": "IntegerTemplate",
     "generator": {
       "type": "Random",
-      "format": "000000"
+      "format": "%05d",
+      "minimum": -100,
+      "maximum": 100
     }
   },
   {
@@ -101,7 +125,9 @@
     "type": "IntegerTemplate",
     "generator": {
       "type": "Sequence",
-      "format": "000000"
+      "format": "%05d",
+      "startValue": 100,
+      "increment": 5
     }
   },
   {
@@ -109,7 +135,10 @@
     "type": "TimeTemplate",
     "generator": {
       "type": "Random",
-      "format": "HH:mm:ss.SSSxx"
+      "format": "HH:mm:ss",
+      "zoneId": "UTC",
+      "minimum": "10:00:00",
+      "maximum": "18:00:00"
     }
   },
   {
@@ -117,7 +146,10 @@
     "type": "TimeTemplate",
     "generator": {
       "type": "Sequence",
-      "format": "HH:mm:ss.SSSxx"
+      "format": "HH:mm:ss",
+      "zoneId": "UTC",
+      "startTime": "10:00:00",
+      "incrementInSec": 10
     }
   },
   {
@@ -125,29 +157,21 @@
     "type": "TimeTemplate",
     "generator": {
       "type": "Current",
-      "format": "HH:mm:ss.SSSxx"
+      "format": "HH:mm:ss.SSS",
+      "zoneId": "UTC"
     }
   },
   {
     "name": "stringRandom",
     "type": "StringTemplate",
     "generator": {
-      "type": "Random"
-    },
-    "format": "\\w+"
-  },
-  {
-    "name": "stringSequence",
-    "type": "StringTemplate",
-    "generator": {
-      "type": "Sequence"
-    },
-    "format": "\\d+"
+      "type": "Random",
+      "regex": "[^0-9]*[12]?[0-9]{1,2}[^0-9]*"
+    }
   },
   {
     "name": "uuid",
-    "type": "UUIDTemplate",
-    "allowMultiple": true,
+    "type": "StringTemplate",
     "generator": {
       "type": "UUIDGenerator"
     }
