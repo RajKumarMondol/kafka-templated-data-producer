@@ -45,6 +45,14 @@ This is to produce kafka messages to specified topic based on the template data 
     }
   },
   {
+    "name": "dateCurrent",
+    "type": "DateTemplate",
+    "generator": {
+      "type": "Current",
+      "format": "yyyy-MM-dd"
+    }
+  },
+  {
     "name": "datetimeRandom",
     "type": "DatetimeTemplate",
     "generator": {
@@ -57,6 +65,14 @@ This is to produce kafka messages to specified topic based on the template data 
     "type": "DatetimeTemplate",
     "generator": {
       "type": "Sequence",
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
+    }
+  },
+  {
+    "name": "datetimeCurrent",
+    "type": "DatetimeTemplate",
+    "generator": {
+      "type": "Current",
       "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx"
     }
   },
@@ -130,6 +146,14 @@ This is to produce kafka messages to specified topic based on the template data 
     "type": "TimeTemplate",
     "generator": {
       "type": "Sequence",
+      "format": "HH:mm:ss.SSSxx"
+    }
+  },
+  {
+    "name": "timeCurrent",
+    "type": "TimeTemplate",
+    "generator": {
+      "type": "Current",
       "format": "HH:mm:ss.SSSxx"
     }
   },

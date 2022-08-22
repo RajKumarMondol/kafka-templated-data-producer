@@ -1,4 +1,4 @@
-package org.rkm.ktdp;
+package org.rkm.ktdp.io;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

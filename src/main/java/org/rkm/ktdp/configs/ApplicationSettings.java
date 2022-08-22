@@ -1,4 +1,4 @@
-package org.rkm.ktdp;
+package org.rkm.ktdp.configs;
 
 import lombok.Getter;
 import org.apache.commons.cli.CommandLine;

@@ -1,11 +1,11 @@
-package org.rkm.ktdp.generators.date;
+package org.rkm.ktdp.generators.time;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
-public class Random extends DateGenerator {
-    public Random(@JsonProperty(value = "format") String format) {
+public class Current extends TimeGenerator {
+    public Current(@JsonProperty(value = "format") String format) {
         super(format);
     }
 }
