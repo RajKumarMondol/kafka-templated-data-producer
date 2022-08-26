@@ -6,38 +6,53 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.rkm.ktdp.generators.specification.BaseGenerator;
-import org.rkm.ktdp.templates.*;
+import org.rkm.ktdp.templates.characters.RandomString;
+import org.rkm.ktdp.templates.characters.UUIDString;
+import org.rkm.ktdp.templates.date.CurrentDate;
+import org.rkm.ktdp.templates.date.DateSequence;
+import org.rkm.ktdp.templates.date.RandomDate;
+import org.rkm.ktdp.templates.datetime.CurrentDateTime;
+import org.rkm.ktdp.templates.datetime.DateTimeSequence;
+import org.rkm.ktdp.templates.datetime.RandomDateTime;
+import org.rkm.ktdp.templates.fromsource.RandomFromSource;
+import org.rkm.ktdp.templates.fromsource.SequenceFromSource;
+import org.rkm.ktdp.templates.number.DoubleSequence;
+import org.rkm.ktdp.templates.number.RandomDouble;
+import org.rkm.ktdp.templates.time.CurrentTime;
+import org.rkm.ktdp.templates.time.RandomTime;
+import org.rkm.ktdp.templates.time.TimeSequence;
+import org.rkm.ktdp.templates.wholenumber.IntegerSequence;
+import org.rkm.ktdp.templates.wholenumber.RandomInteger;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = DateTemplate.class),
-        @JsonSubTypes.Type(value = DatetimeTemplate.class),
-        @JsonSubTypes.Type(value = DoubleTemplate.class),
-        @JsonSubTypes.Type(value = FromSourceTemplate.class),
-        @JsonSubTypes.Type(value = IntegerTemplate.class),
-        @JsonSubTypes.Type(value = TimeTemplate.class),
-        @JsonSubTypes.Type(value = StringTemplate.class),
+        @JsonSubTypes.Type(value = RandomDate.class),
+        @JsonSubTypes.Type(value = DateSequence.class),
+        @JsonSubTypes.Type(value = CurrentDate.class),
+        @JsonSubTypes.Type(value = RandomString.class),
+        @JsonSubTypes.Type(value = UUIDString.class),
+        @JsonSubTypes.Type(value = CurrentDateTime.class),
+        @JsonSubTypes.Type(value = RandomDateTime.class),
+        @JsonSubTypes.Type(value = DateTimeSequence.class),
+        @JsonSubTypes.Type(value = RandomFromSource.class),
+        @JsonSubTypes.Type(value = SequenceFromSource.class),
+        @JsonSubTypes.Type(value = RandomDouble.class),
+        @JsonSubTypes.Type(value = DoubleSequence.class),
+        @JsonSubTypes.Type(value = RandomTime.class),
+        @JsonSubTypes.Type(value = TimeSequence.class),
+        @JsonSubTypes.Type(value = CurrentTime.class),
+        @JsonSubTypes.Type(value = RandomInteger.class),
+        @JsonSubTypes.Type(value = IntegerSequence.class),
 })
 @EqualsAndHashCode
 @ToString
 public abstract class BaseTemplate {
-    protected final BaseGenerator generator;
     @Getter
     private final String name;
-    @Getter
-    private final boolean allowMultiple;
 
-    protected BaseTemplate(@JsonProperty(value = "name") String name,
-                           @JsonProperty(value = "allowMultiple") boolean allowMultiple,
-                           @JsonProperty(value = "generator") BaseGenerator generator) {
+    public BaseTemplate(@JsonProperty(value = "name") String name) {
         this.name = name;
-        this.allowMultiple = allowMultiple;
-        this.generator = generator;
     }
 
-    public String generate() {
-        return generator.generate();
-    }
+    public abstract String generate();
 }
-

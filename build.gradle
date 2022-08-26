@@ -34,6 +34,8 @@ dependencies {
     compile group: "com.fasterxml.jackson.datatype", name: "jackson-datatype-jsr310"
     compile group: "com.github.curious-odd-man", name: "rgxgen", version: "1.4"
 
+    implementation group: 'joda-time', name: 'joda-time', version: '2.11.0'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

@@ -1,179 +1,118 @@
 [
   {
     "name": "dateRandom",
-    "type": "DateTemplate",
-    "generator": {
-      "type": "Random",
-      "format": "yyyy-MM-dd",
-      "minimum": "2022-08-24",
-      "maximum": "2022-09-24"
-    }
+    "type": "RandomDate",
+    "format": "yyyy-MM-dd",
+    "minimum": "2022-08-24",
+    "maximum": "2022-09-24"
   },
   {
     "name": "dateSequence",
-    "type": "DateTemplate",
-    "generator": {
-      "type": "Sequence",
-      "format": "yyyy-MM-dd",
-      "startDate": "2022-08-24",
-      "incrementInDays": 5
-    }
+    "type": "DateSequence",
+    "format": "yyyy-MM-dd",
+    "startDate": "2022-08-24",
+    "incrementInDays": 5
   },
   {
     "name": "dateCurrent",
-    "type": "DateTemplate",
-    "generator": {
-      "type": "Current",
-      "format": "yyyy-MM-dd",
-      "zoneId": "UTC"
-    }
+    "type": "CurrentDate",
+    "format": "yyyy-MM-dd",
+    "zoneId": "UTC"
   },
   {
     "name": "datetimeRandom",
-    "type": "DatetimeTemplate",
-    "generator": {
-      "type": "Random",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSS",
-      "minimum": "2022-08-24T10:00:00.000",
-      "maximum": "2022-09-24T18:00:00.000"
-    }
+    "type": "RandomDateTime",
+    "format": "yyyy-MM-dd'T'HH:mm:ss.SSS",
+    "zoneId": "UTC",
+    "minimum": "2022-08-24T10:00:00.000",
+    "maximum": "2022-09-24T18:00:00.000"
   },
   {
     "name": "datetimeSequence",
-    "type": "DatetimeTemplate",
-    "generator": {
-      "type": "Sequence",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-      "zoneId": "UTC"
-    }
+    "type": "DateTimeSequence",
+    "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
+    "zoneId": "UTC"
   },
   {
     "name": "datetimeCurrent",
-    "type": "DatetimeTemplate",
-    "generator": {
-      "type": "Local",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-      "zoneId": "UTC"
-    }
-  },
-  {
-    "name": "datetimeCurrent",
-    "type": "DatetimeTemplate",
-    "generator": {
-      "type": "Universal",
-      "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-      "zoneId": "UTC"
-    }
+    "type": "CurrentDateTime",
+    "format": "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
+    "zoneId": "UTC"
   },
   {
     "name": "doubleRandom",
-    "type": "DoubleTemplate",
-    "generator": {
-      "type": "Random",
-      "format": "%5.2f",
-      "minimum": -10.0,
-      "maximum": -10.0
-    }
+    "type": "RandomDouble",
+    "format": "%5.2f",
+    "minimum": -10.0,
+    "maximum": -10.0
   },
   {
     "name": "doubleSequence",
-    "type": "DoubleTemplate",
-    "generator": {
-      "type": "Sequence",
-      "format": "%5.2f",
-      "startValue": 100.01,
-      "increment": 0.01
-    }
+    "type": "DoubleSequence",
+    "format": "%5.2f",
+    "startValue": 100.01,
+    "increment": 0.01
   },
   {
     "name": "sourceRandom",
-    "type": "FromSourceTemplate",
-    "generator": {
-      "type": "Random",
-      "source": {
-        "type": "FromFile",
-        "filepath": "./src/main/resources/values.txt"
-      }
+    "type": "RandomFromSource",
+    "source": {
+      "type": "FromFile",
+      "filepath": "./src/main/resources/values.txt"
     }
   },
   {
     "name": "sourceSequence",
-    "type": "FromSourceTemplate",
-    "generator": {
-      "type": "Sequence",
-      "source": {
-        "type": "FromValues",
-        "values": [
-          "value1",
-          "value2"
-        ]
-      }
+    "type": "SequenceFromSource",
+    "source": {
+      "type": "FromValues",
+      "values": [
+        "value1",
+        "value2"
+      ]
     }
   },
   {
     "name": "integerRandom",
-    "type": "IntegerTemplate",
-    "generator": {
-      "type": "Random",
-      "format": "%05d",
-      "minimum": -100,
-      "maximum": 100
-    }
+    "type": "RandomInteger",
+    "format": "%05d",
+    "minimum": -100,
+    "maximum": 100
   },
   {
     "name": "integerSequence",
-    "type": "IntegerTemplate",
-    "generator": {
-      "type": "Sequence",
-      "format": "%05d",
-      "startValue": 100,
-      "increment": 5
-    }
+    "type": "IntegerSequence",
+    "format": "%05d",
+    "startValue": 100,
+    "increment": 5
   },
   {
     "name": "timeRandom",
-    "type": "TimeTemplate",
-    "generator": {
-      "type": "Random",
-      "format": "HH:mm:ss",
-      "zoneId": "UTC",
-      "minimum": "10:00:00",
-      "maximum": "18:00:00"
-    }
+    "type": "RandomTime",
+    "format": "HH:mm:ss",
+    "minimum": "10:00:00",
+    "maximum": "18:00:00"
   },
   {
     "name": "timeSequence",
-    "type": "TimeTemplate",
-    "generator": {
-      "type": "Sequence",
-      "format": "HH:mm:ss",
-      "zoneId": "UTC",
-      "startTime": "10:00:00",
-      "incrementInSec": 10
-    }
+    "type": "TimeSequence",
+    "format": "HH:mm:ss",
+    "startTime": "10:00:00",
+    "incrementInSec": 10
   },
   {
     "name": "timeCurrent",
-    "type": "TimeTemplate",
-    "generator": {
-      "type": "Current",
-      "format": "HH:mm:ss.SSS",
-      "zoneId": "UTC"
-    }
+    "type": "CurrentTime",
+    "format": "HH:mm:ss.SSS",
+    "zoneId": "UTC"
   },
   {
     "name": "stringRandom",
-    "type": "StringTemplate",
-    "generator": {
-      "type": "Random",
-      "regex": "[^0-9]*[12]?[0-9]{1,2}[^0-9]*"
-    }
+    "type": "RandomString",
+    "regex": "[^0-9]*[12]?[0-9]{1,2}[^0-9]*"
   },
   {
     "name": "uuid",
-    "type": "StringTemplate",
-    "generator": {
-      "type": "UUIDGenerator"
-    }
+    "type": "UUIDString"
   }
 ]
